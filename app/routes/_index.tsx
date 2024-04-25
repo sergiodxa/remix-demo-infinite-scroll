@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,32 +11,21 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
+      <h1>Remix + Infinite Scroll Pagination</h1>
       <ul>
         <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
+          <Link to="/single-fetch" prefetch="intent">
+            Single Fetch Pagination
+          </Link>
+          <p>
+            Using (unstable) Single Fetch and a in-memory cache to load the list
+            of pages while supporting reloading and keeping the same list, each
+            page is loaded using Suspense to get fast response times.
+          </p>
         </li>
       </ul>
+
+      <p>More approaches will be added eventually</p>
     </div>
   );
 }
